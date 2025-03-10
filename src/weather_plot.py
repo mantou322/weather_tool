@@ -11,6 +11,7 @@ import matplotlib.pyplot as plt
 import matplotlib.dates as mdates
 from datetime import datetime
 import matplotlib.font_manager as fm
+import platform
 
 def plot_weather_data(weather_data_list, city_code=None):
     """
@@ -20,8 +21,14 @@ def plot_weather_data(weather_data_list, city_code=None):
         weather_data_list (list): 天气数据列表，每个元素包含date、high_temp、low_temp、weather和wind_power字段
         city_code (str, optional): 城市代码
     """
-    # 设置中文字体
-    plt.rcParams['font.sans-serif'] = ['Microsoft YaHei']
+    # 根据操作系统设置中文字体
+    system = platform.system()
+    if system == 'Windows':
+        plt.rcParams['font.sans-serif'] = ['Microsoft YaHei']
+    elif system == 'Darwin':  # macOS
+        plt.rcParams['font.sans-serif'] = ['PingFang SC', 'Heiti SC', 'STHeiti', 'Apple LiGothic Medium']
+    else:  # Linux或其他系统
+        plt.rcParams['font.sans-serif'] = ['DejaVu Sans', 'WenQuanYi Micro Hei', 'WenQuanYi Zen Hei']
     plt.rcParams['axes.unicode_minus'] = False
     
     # 创建图表和坐标轴
