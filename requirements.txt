@@ -1,0 +1,10 @@
+# 基本依赖
+python-dotenv>=0.19.0
+requests>=2.26.0
+beautifulsoup4>=4.9.3
+
+# 图表依赖
+matplotlib>=3.5.0
+
+# 打包依赖
+pyinstaller>=5.0.0
